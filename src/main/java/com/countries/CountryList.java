@@ -3,7 +3,7 @@ package com.countries;
 import java.util.ArrayList;
 
 public class CountryList {
-    public ArrayList<Country> countryList = new ArrayList<Country>();
+    public ArrayList<Country> countryList = new ArrayList<>();
 
     public CountryList() {
         countryList.add(new Country("China", 1420062022, 9388211, 39));
@@ -207,5 +207,28 @@ public class CountryList {
         countryList.add(new Country("U.S. Virgin Islands", 104909, 350, 42));
         countryList.add(new Country("Antigua and Barbuda", 104084, 440, 32));
         countryList.add(new Country("Seychelles", 95702, 460, 36));
+    }
+
+    // find emp that matches filter
+    public Country findCountry(CheckCountry tester) {
+        for (Country e : countryList) {
+            if (tester.test(e)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    // find all employees that match filter
+    public ArrayList<Country> findCountries(CheckCountry tester) {
+        ArrayList<Country> tempEmpList = new ArrayList<>();
+
+        for (Country e : countryList) {
+            if (tester.test(e)) {
+                tempEmpList.add(e);
+            }
+        }
+
+        return tempEmpList;
     }
 }
